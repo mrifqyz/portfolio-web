@@ -1,0 +1,25 @@
+.not-found{
+    padding: 20vh 10vw 20vw 10vw;
+    display: flex;
+    justify-content: space-between;
+
+    .btn {
+        margin-top: 48px;
+    }
+
+    h1{
+        margin-bottom: 24px;
+    }
+
+    img {
+        position: absolute;
+        top: 25vh;
+        right: 0;
+        max-width: 40vw;
+
+        @media (max-width:768px) {
+            top: 42vh;
+            max-width: 35vh;
+        }
+    }
+}

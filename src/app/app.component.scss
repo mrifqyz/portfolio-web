@@ -1,0 +1,23 @@
+nav {
+    padding-left: 10vw;
+    padding-right: 10vw;
+    display: flex;
+    justify-content: space-between;
+
+    .navbar-collapse{
+        flex-grow:unset;
+    }
+
+    .nav-link{
+        color: #6d6d6d;
+    }
+
+    .active {
+        color: #17141C;
+        font-weight: bold;
+    }
+}
+
+.content {
+    min-height: calc(100vh - 25vh);
+  }

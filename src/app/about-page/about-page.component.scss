@@ -19,6 +19,10 @@
 
     @media (max-width:990px) {
         flex-direction: column-reverse;
+        
+        #my-blob{
+            width: 75vw;
+        }
     }
 
     h4 {
@@ -37,7 +41,7 @@
 
         img {
             width: 36px;
-            height: max-content;
+            height: auto;
         }
     }
 }

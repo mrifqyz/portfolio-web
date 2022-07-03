@@ -1,0 +1,103 @@
+#quick-summary {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-right: 5vw;
+    padding-left: 5vw;
+
+    .text-profile{
+        padding-top: 5vh;
+    }
+
+    .info-data{
+        margin-top: 48px;
+
+        div {
+            margin: 20px 0 20px 0;
+        }
+    }
+
+    @media (max-width:990px) {
+        flex-direction: column-reverse;
+    }
+
+    h4 {
+        color: #858585;
+    }
+
+    .social-media-group {
+        margin-top: 64px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .row a{
+            margin: 12px 0 12px 0;
+        }
+
+        img {
+            width: 36px;
+            height: max-content;
+        }
+    }
+}
+
+#additonal-info{
+    margin-top: 10vh;
+    padding-left: 10vw;
+    padding-right: 10vw;
+    margin-bottom: 10vh;
+
+    #work-experience {
+        margin-bottom: 5vh;
+        h5 {
+            margin-bottom: 3vh;
+        }
+    }
+
+    .row {
+        display: flex;
+        justify-content: space-evenly;
+        
+        @media (max-width:990px) {
+            flex-direction: column;
+            .col-md-6 {
+                width: 100%;
+            }
+        }
+    }
+
+    .card {
+        padding: 28px;
+        margin: 0 8px 16px 8px;
+        background-color: #fafafa;
+        border-radius: 20px!important;
+        box-shadow: -1px 2px 10px -1px rgba(0, 0, 0, 0.5);
+
+        .header-text-title{
+            display: flex;
+            flex-direction: row;
+        }
+
+        img {
+            margin-right: 16px;
+            width: 64px;
+            height: 64px;
+        }
+
+        .descriptions-experience{
+            height: 150px;
+            overflow: scroll;
+            margin-top: 16px;
+
+            li {
+                margin: 4px 0;
+            }
+        }
+    }
+    #education {
+        h5 {
+            margin-bottom: 3vh;
+        }
+    }
+}

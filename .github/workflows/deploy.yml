@@ -40,7 +40,7 @@ jobs:
         host: ${{ secrets.GCP_IP }}
         username: ${{ secrets.GCP_SSH_USER }}
         key: ${{ secrets.GCP_SSH_KEY }}
-        source: "dist/portfolio-web/*"
+        source: "dist/portofolio-web/*"
         target: "/var/www/portfolio"
         strip_components: 2 # Removes 'dist/portfolio-web' folders so files land directly in /portfolio
 

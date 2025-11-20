@@ -40,9 +40,7 @@ jobs:
         host: ${{ secrets.GCP_IP }}
         username: ${{ secrets.GCP_SSH_USER }}
         key: ${{ secrets.GCP_SSH_KEY }}
-        # 'source' must match your actual build output path. 
-        # Check your angular.json if "dist/portfolio-web/browser" is incorrect.
-        source: "dist/portfolio-web/browser/*"
+        source: "dist/portfolio-web/*"
         target: "/var/www/portfolio"
         strip_components: 2 # Removes 'dist/portfolio-web' folders so files land directly in /portfolio
 

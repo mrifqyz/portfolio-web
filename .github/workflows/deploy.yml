@@ -3,48 +3,41 @@ name: Deploy Angular to GCP Root Domain
 on:
   push:
     branches:
-      - main  # configures this to run only when you push to main
+      - main
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-    # 1. Checkout Code
     - name: Checkout code
       uses: actions/checkout@v4
 
-    # 2. Setup Node.js Environment
     - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: '20' # Adjust based on your Angular version
+        node-version: '20'
         cache: 'npm'
 
-    # 3. Install Dependencies and Build
     - name: Install Dependencies
       run: npm ci
 
     - name: Build Angular App
-      # Builds for production. 
-      # output usually goes to dist/portfolio-web/browser
       run: npm run build -- --configuration production
 
     - name: Debug - List Dist Folder
       run: ls -R dist
 
-    # 4. Copy Files to VM (SCP)
     - name: Copy files via SCP
       uses: appleboy/scp-action@master
       with:
         host: ${{ secrets.GCP_IP }}
         username: ${{ secrets.GCP_SSH_USER }}
         key: ${{ secrets.GCP_SSH_KEY }}
-        source: "dist/portfolio-web/*"
+        source: "dist/portofolio-web/*"
         target: "/var/www/portfolio"
-        strip_components: 2 # Removes 'dist/portfolio-web' folders so files land directly in /portfolio
+        strip_components: 2
 
-    # 5. Restart Nginx (Optional but recommended to clear caches)
     - name: Reload Nginx
       uses: appleboy/ssh-action@master
       with:

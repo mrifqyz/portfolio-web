@@ -1,19 +1,19 @@
-import { Component, OnInit } from '@angular/core';
-import { environment } from 'src/environments/environment';
-import { GoogleAnalyticsService } from './google-analytics.service';
+import { Component } from '@angular/core';
+import { LanguageService } from './core/services/language.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
-  imagePath = environment.imagePath;
+export class AppComponent {
   title = 'portofolio-web';
 
-  constructor(private googleAnalyticsService: GoogleAnalyticsService) {}
+  constructor(private languageService: LanguageService) {
+    this.languageService.setDefaultLang('en');
 
-  ngOnInit() {
-    this.googleAnalyticsService.init();
+    const browserLang = this.languageService.getBrowserLang();
+    const langToUse = browserLang?.match(/en|ja/) ? browserLang : 'en';
+    this.languageService.use(langToUse);
   }
 }

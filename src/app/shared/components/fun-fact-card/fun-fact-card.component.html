@@ -1,0 +1,7 @@
+<div [ngClass]="'bg-gradient-to-br from-' + funFact.gradientFrom + '-50 to-' + funFact.gradientTo + '-100 dark:from-' + funFact.gradientFrom + '-900/20 dark:to-' + funFact.gradientTo + '-800/20 rounded-xl p-6 text-center hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1'">
+  <div class="w-16 h-16 bg-white dark:bg-gray-800 rounded-full flex items-center justify-center mx-auto mb-4 shadow-md transition-colors duration-300">
+    <span class="text-3xl">{{ funFact.emoji }}</span>
+  </div>
+  <h3 class="text-lg font-bold text-gray-900 dark:text-gray-100 mb-2 transition-colors duration-300">{{ funFact.title }}</h3>
+  <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors duration-300">{{ funFact.description }}</p>
+</div>

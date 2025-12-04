@@ -1,59 +1,26 @@
-nav {
-    padding-top: 2vh;
-    padding-left: 10vw;
-    padding-right: 10vw;
-    display: flex;
-    justify-content: space-between;
-
-    .navbar-collapse{
-        flex-grow:unset;
+@keyframes slide-down {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
     }
-
-    .nav-link{
-        color: #6d6d6d;
-    }
-
-    .active {
-        color: #17141C;
-        font-weight: bold;
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 
+.animate-slide-down {
+    animation: slide-down 0.3s ease-out;
+}
+
+.nav-active {
+    @apply text-[#306AB4] bg-blue-50 font-semibold;
+}
+
+.mobile-nav-active {
+    @apply text-[#306AB4] bg-blue-50 font-semibold;
+}
+
 .content {
-    min-height: calc(100vh - 25vh);
-  }
-
-footer {
-    padding-left: 10vw;
-    padding-top: 4vh;
-    padding-right: 10vw;
-    padding-bottom: 2vh;
-
-    background-color: #17141C;
-    color: #FFFFFF;
-
-    display: flex;
-    justify-content: space-between;
-
-    .copyright {
-        display: flex;
-        flex-direction: column-reverse;
-    }
-
-    h5 {
-        margin-bottom: 2vh;
-    }
-
-    @media (max-width: 768px){
-        flex-direction: column;
-    }
-
-    .contact-info{
-        display: flex;
-        flex-direction: row;
-
-        svg {
-            margin-right: 16px;
-        }
-    }
+    min-height: calc(100vh - 5rem);
 }

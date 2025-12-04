@@ -1,0 +1,102 @@
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+    <div class="order-2 lg:order-1 space-y-6">
+        <div>
+            <span class="inline-block px-4 py-2 bg-blue-100 dark:bg-blue-900/30 text-[#306AB4] dark:text-blue-400 font-semibold rounded-full text-sm mb-4 transition-colors duration-300">
+                {{ summary.badge }}
+            </span>
+            <h3 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-6 transition-colors duration-300">
+                {{ summary.title }} <span class="text-[#306AB4] dark:text-blue-400">{{ summary.titleHighlight }}</span>
+            </h3>
+        </div>
+
+        <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-xl border border-gray-100 dark:border-gray-700 transition-colors duration-300">
+            <div class="flex items-start gap-4 mb-4">
+                <div class="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+                    <fa-icon [icon]="summary.roleIcon" class="text-white text-2xl"></fa-icon>
+                </div>
+                <div class="flex-1">
+                    <h4 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2 transition-colors duration-300">{{ summary.roleTitle }}</h4>
+                    <p class="text-gray-600 dark:text-gray-400 leading-relaxed transition-colors duration-300" [innerHTML]="summary.roleDescription"></p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6 pt-6 border-t border-gray-100 dark:border-gray-700 transition-colors duration-300">
+                <div *ngFor="let metric of summary.metrics" class="flex items-center gap-3">
+                    <div [ngClass]="'w-10 h-10 rounded-lg flex items-center justify-center transition-colors duration-300 ' + metric.colorClass">
+                        <fa-icon [icon]="metric.icon" class="text-lg"></fa-icon>
+                    </div>
+                    <div>
+                        <p class="text-2xl font-bold text-gray-900 dark:text-gray-100 transition-colors duration-300">{{ metric.value }}</p>
+                        <p class="text-xs text-gray-600 dark:text-gray-400 transition-colors duration-300">{{ metric.label }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Location -->
+            <div class="mt-6 pt-6 border-t border-gray-100 dark:border-gray-700 transition-colors duration-300">
+                <div class="flex items-center gap-2 text-gray-600 dark:text-gray-400">
+                    <fa-icon [icon]="faMapMarkerAlt" class="text-[#306AB4] dark:text-blue-400"></fa-icon>
+                    <span class="text-sm font-medium">{{ summary.locationLabel }}:</span>
+                    <span class="text-sm">{{ summary.location }}</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Expandable Education Section -->
+        <!-- <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl border border-gray-100 dark:border-gray-700 overflow-hidden transition-all duration-300">
+            <button (click)="toggleEducation()"
+                    class="w-full px-8 py-6 flex items-center justify-between hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors duration-300">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+                        <fa-icon [icon]="faGraduationCap" class="text-white text-lg"></fa-icon>
+                    </div>
+                    <span class="text-[#306AB4] dark:text-blue-400 font-semibold">
+                        {{ isEducationExpanded ? summary.hideEducationText : summary.viewEducationText }}
+                    </span>
+                </div>
+                <fa-icon [icon]="isEducationExpanded ? faChevronUp : faChevronDown"
+                         class="text-[#306AB4] dark:text-blue-400 transition-transform duration-300"></fa-icon>
+            </button>
+
+            <div *ngIf="isEducationExpanded"
+                 class="px-8 pb-6 border-t border-gray-100 dark:border-gray-700 animate-fade-in">
+                <div class="mt-6 space-y-4">
+                    <div>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-1">Degree</p>
+                        <p class="text-base font-semibold text-gray-900 dark:text-gray-100">{{ summary.education.degree }}</p>
+                    </div>
+                    <div>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-1">University</p>
+                        <p class="text-base font-semibold text-gray-900 dark:text-gray-100">{{ summary.education.institution }}</p>
+                    </div>
+                    <div>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-1">Graduated</p>
+                        <p class="text-base font-semibold text-gray-900 dark:text-gray-100">{{ summary.education.graduatedYear }}</p>
+                    </div>
+                    <div>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-1">Thesis</p>
+                        <p class="text-base text-gray-700 dark:text-gray-300 leading-relaxed">{{ summary.education.thesis }}</p>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+    </div>
+
+    <div class="order-1 lg:order-2 relative flex items-center justify-center">
+        <div class="relative w-full max-w-md">
+            <img [src]="summary.image" alt="Profile" class="relative w-full h-auto">
+
+            <div class="absolute -bottom-4 -left-4 bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-4 transform hover:scale-105 transition-all duration-300 z-10">
+                <div class="flex items-center gap-3">
+                    <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center">
+                        <span class="text-white text-xl font-bold">{{ summary.experienceYears }}</span>
+                    </div>
+                    <div>
+                        <p class="text-sm font-semibold text-gray-900 dark:text-gray-100 transition-colors duration-300">{{ summary.experienceLabel.yearsOf }}</p>
+                        <p class="text-xs text-gray-600 dark:text-gray-400 transition-colors duration-300">{{ summary.experienceLabel.experience }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

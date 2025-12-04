@@ -1,49 +1,112 @@
-<section id="intermezzo">
-    <img [src]="imagePath + 'landing/avatar.png'" alt="" id="avatar-intermezzo">
-    <h4><b>Hello, I'm Rifqy!</b></h4>
-    <h1>I love <b>ideate</b> and <b>build</b> an impactful products that brings meaningful
-        <b>changes</b> towards the society.
-    </h1>
-    <div class="button-group">
-        <button class="btn btn-primary btn-primary-web" [routerLink]="['/about-me']">About Me</button>
-        <a href="">Projects</a>
+<app-hero-section [hero]="heroSection"></app-hero-section>
+<section id="summary" class="py-20 px-6 bg-gradient-to-b from-gray-50 to-white dark:from-gray-800 dark:to-gray-900 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto">
+        <app-summary-card [summary]="summary"></app-summary-card>
     </div>
-    <div class="social-media-group">
-        <div class="row">
-            <a href="https://www.instagram.com/mrifqyz17/" target="_blank" rel="noopener noreferrer" class="col">
-                <img [src]="imagePath + 'icon/instagram.png'">
-            </a>
-            <a href="https://www.linkedin.com/in/mrifqyz/" target="_blank" rel="noopener noreferrer" class="col">
-                <img [src]="imagePath + 'icon/linkedin.png'">
-            </a>
-            <a href="https://gitlab.com/mrifqyz" target="_blank" rel="noopener noreferrer" class="col">
-                <img [src]="imagePath + 'icon/gitlab.png'">
-            </a>
-            <a href="https://github.com/mrifqyz" target="_blank" rel="noopener noreferrer" class="col">
-                <img [src]="imagePath + 'icon/github.png'">
-            </a>
-            <a href="https://twitter.com/yocinoyaa" target="_blank" rel="noopener noreferrer" class="col">
-                <img [src]="imagePath + 'icon/twitter.png'">
-            </a>
+</section>
+
+<!-- <section id="skills" class="py-20 px-6 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+            <span class="inline-block px-4 py-2 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 font-semibold rounded-full text-sm mb-4 transition-colors duration-300">
+                🛠️ {{ skillsSection.badge }}
+            </span>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4 transition-colors duration-300">
+                {{ skillsSection.title }}
+            </h2>
+            <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto transition-colors duration-300">
+                {{ skillsSection.subtitle }}
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6 md:gap-8 lg:gap-10">
+            <app-skill-card *ngFor="let category of skillCategories" [category]="category"></app-skill-card>
         </div>
     </div>
+</section> -->
 
-</section>
-<section id="summary">
-    <div id="summary-text">
-        <h3>Quick <b>Summary</b></h3>
-        <p>
-            Backend Software Engineer with 4 years of experience engineering mission-critical financial systems.
-            specialized in Java (Spring Boot) to build high-
-            availability APIs and orchestrate zero-downtime legacy migrations. Proven track record of performance
-            tuning, including a 90% reduction in API latency (1s
-            → 100ms) for high-volume transactions. Dedicated to building secure, scalable architectures that support
-            rapid business expansion.
-        </p>
-        <a [routerLink]="['/about-me']">Learn more</a>
+<section id="experience" class="py-20 px-6 bg-white dark:bg-gray-900 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+            <span class="inline-block px-4 py-2 bg-blue-100 dark:bg-blue-900/30 text-[#306AB4] dark:text-blue-400 font-semibold rounded-full text-sm mb-4 transition-colors duration-300">
+                💼 {{ experienceSection.badge }}
+            </span>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4 transition-colors duration-300">
+                {{ experienceSection.title }}
+            </h2>
+            <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto transition-colors duration-300">
+                {{ experienceSection.subtitle }}
+            </p>
+        </div>
+
+        <div class="space-y-8">
+            <app-experience-card
+                *ngFor="let experience of workExperiences"
+                [experience]="experience"
+                [isExpanded]="experience.isExpanded || false"
+                (toggle)="toggleExperience(experience)">
+            </app-experience-card>
+        </div>
     </div>
-    <img [src]="imagePath + 'landing/me.png'" alt="" id="avatar-intermezzo">
 </section>
-<section id="coming-soon">
-    <h2>Hold on as more contents are <b>coming soon</b>!</h2>
+
+<section id="projects" class="py-20 px-6 bg-white dark:bg-gray-800 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+            <span class="inline-block px-4 py-2 bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 font-semibold rounded-full text-sm mb-4 transition-colors duration-300">
+                💡 {{ projectsSection.badge }}
+            </span>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4 transition-colors duration-300">
+                {{ projectsSection.title }}
+            </h2>
+            <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto transition-colors duration-300">
+                {{ projectsSection.subtitle }}
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+            <app-project-card *ngFor="let project of projects" [project]="project"></app-project-card>
+        </div>
+    </div>
+</section>
+
+<!-- <section id="education" class="py-20 px-6 bg-gradient-to-b from-gray-50 to-white dark:from-gray-800 dark:to-gray-900 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+            <span class="inline-block px-4 py-2 bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 font-semibold rounded-full text-sm mb-4 transition-colors duration-300">
+                🎓 {{ educationSection.badge }}
+            </span>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4 transition-colors duration-300">
+                {{ educationSection.title }}
+            </h2>
+        </div>
+
+        <div class="max-w-4xl mx-auto">
+            <app-education-card [education]="education"></app-education-card>
+        </div>
+    </div>
+</section> -->
+
+<!-- <section id="fun-facts" class="py-20 px-6 bg-white dark:bg-gray-900 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+            <span class="inline-block px-4 py-2 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-600 dark:text-yellow-400 font-semibold rounded-full text-sm mb-4 transition-colors duration-300">
+                ✨ {{ funFactsSection.badge }}
+            </span>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4 transition-colors duration-300">
+                {{ funFactsSection.title }}
+            </h2>
+            <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto transition-colors duration-300">
+                {{ funFactsSection.subtitle }}
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <app-fun-fact-card *ngFor="let funFact of funFacts" [funFact]="funFact"></app-fun-fact-card>
+        </div>
+    </div>
+</section> -->
+
+<section id="contact" class="py-20 px-6 bg-white dark:bg-gray-800 transition-colors duration-300">
+    <app-cta-section [cta]="ctaSection"></app-cta-section>
 </section>

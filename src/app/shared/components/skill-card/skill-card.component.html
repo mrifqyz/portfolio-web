@@ -1,0 +1,11 @@
+<div class="bg-white dark:bg-gray-800 rounded-xl p-6 md:p-7 shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 dark:border-gray-700">
+  <div class="flex items-center gap-3 mb-6 md:mb-7">
+    <div [ngClass]="'w-12 h-12 rounded-lg flex items-center justify-center transition-colors duration-300 bg-' + category.iconColor + '-100 dark:bg-' + category.iconColor + '-900/30'">
+      <fa-icon [icon]="category.icon" [ngClass]="'text-2xl text-' + category.iconColor + '-600 dark:text-' + category.iconColor + '-400'"></fa-icon>
+    </div>
+    <h3 class="text-lg font-bold text-gray-900 dark:text-gray-100 transition-colors duration-300">{{ category.name }}</h3>
+  </div>
+  <div class="space-y-5">
+    <app-skill-item *ngFor="let skill of category.skills" [skill]="skill"></app-skill-item>
+  </div>
+</div>

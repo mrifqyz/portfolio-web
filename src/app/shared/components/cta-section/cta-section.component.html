@@ -1,0 +1,21 @@
+<div class="max-w-4xl mx-auto text-center">
+    <div class="bg-gradient-to-br from-[#306AB4] to-purple-600 dark:from-blue-700 dark:to-purple-700 rounded-3xl p-12 md:p-16 text-white shadow-2xl transition-colors duration-300">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">{{ cta.title }}</h2>
+        <p class="text-lg text-blue-100 mb-8 max-w-2xl mx-auto">
+            {{ cta.description }}
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a *ngFor="let button of cta.buttons"
+               [href]="button.href"
+               [download]="button.download ? '' : null"
+               [ngClass]="{
+                   'inline-flex items-center justify-center gap-2 px-8 py-4 font-semibold rounded-full shadow-lg transition-all duration-300 transform hover:-translate-y-1': true,
+                   'bg-white text-[#306AB4] hover:shadow-xl': button.type === 'primary',
+                   'bg-white/10 backdrop-blur-sm text-white border-2 border-white/30 hover:bg-white/20': button.type === 'secondary'
+               }">
+                <fa-icon [icon]="button.icon" class="text-lg"></fa-icon>
+                {{ button.label }}
+            </a>
+        </div>
+    </div>
+</div>

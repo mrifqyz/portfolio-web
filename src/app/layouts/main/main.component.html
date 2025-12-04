@@ -1,0 +1,286 @@
+<nav class="sticky top-0 z-50 bg-white/95 dark:bg-gray-900/95 backdrop-blur-lg border-b border-gray-200 dark:border-gray-800 shadow-sm transition-all duration-300">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16 lg:h-18">
+      <a [routerLink]="['/']" class="flex items-center gap-3 group">
+        <div class="relative">
+          <div class="absolute inset-0 bg-blue-500 dark:bg-blue-600 blur-lg opacity-0 group-hover:opacity-30 transition-opacity duration-300"></div>
+          <img [src]="imagePath + 'logo.png'" alt="mrifqyz" class="relative h-10 lg:h-12 w-auto transform group-hover:scale-105 transition-transform duration-200">
+        </div>
+        <div class="hidden sm:block">
+          <div class="text-lg font-bold text-gray-900 dark:text-gray-100 transition-colors">{{ nav.name }}</div>
+          <div class="text-xs text-gray-500 dark:text-gray-400">{{ nav.title }}</div>
+        </div>
+      </a>
+
+      <div class="hidden lg:flex items-center gap-2">
+        <div class="flex items-center gap-1 px-3">
+          <a href="#hero"
+             [ngClass]="{'nav-active': isSectionActive('hero')}"
+             class="nav-link relative px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-[#306AB4] dark:hover:text-blue-400 rounded-md transition-all duration-200 group">
+            <span class="relative z-10">{{ nav.home }}</span>
+            <div class="absolute inset-0 bg-blue-50 dark:bg-gray-800 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
+          </a>
+          <a href="#summary"
+             [ngClass]="{'nav-active': isSectionActive('summary')}"
+             class="nav-link relative px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-[#306AB4] dark:hover:text-blue-400 rounded-md transition-all duration-200 group">
+            <span class="relative z-10">{{ nav.about }}</span>
+            <div class="absolute inset-0 bg-blue-50 dark:bg-gray-800 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
+          </a>
+          <a href="#skills"
+             [ngClass]="{'nav-active': isSectionActive('skills')}"
+             class="nav-link relative px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-[#306AB4] dark:hover:text-blue-400 rounded-md transition-all duration-200 group">
+            <span class="relative z-10">{{ nav.skills }}</span>
+            <div class="absolute inset-0 bg-blue-50 dark:bg-gray-800 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
+          </a>
+          <a href="#experience"
+             [ngClass]="{'nav-active': isSectionActive('experience')}"
+             class="nav-link relative px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-[#306AB4] dark:hover:text-blue-400 rounded-md transition-all duration-200 group">
+            <span class="relative z-10">{{ nav.experience }}</span>
+            <div class="absolute inset-0 bg-blue-50 dark:bg-gray-800 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
+          </a>
+          <a href="#projects"
+             [ngClass]="{'nav-active': isSectionActive('projects')}"
+             class="nav-link relative px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-[#306AB4] dark:hover:text-blue-400 rounded-md transition-all duration-200 group">
+            <span class="relative z-10">{{ nav.projects }}</span>
+            <div class="absolute inset-0 bg-blue-50 dark:bg-gray-800 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
+          </a>
+          <a href="#education"
+             [ngClass]="{'nav-active': isSectionActive('education')}"
+             class="nav-link relative px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-[#306AB4] dark:hover:text-blue-400 rounded-md transition-all duration-200 group">
+            <span class="relative z-10">{{ nav.education }}</span>
+            <div class="absolute inset-0 bg-blue-50 dark:bg-gray-800 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
+          </a>
+          <a href="https://medium.com/@rifqy-lxgw"
+             target="_blank"
+             rel="noopener noreferrer"
+             class="nav-link relative px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-[#306AB4] dark:hover:text-blue-400 rounded-md transition-all duration-200 group">
+            <span class="relative z-10">Blog</span>
+            <div class="absolute inset-0 bg-blue-50 dark:bg-gray-800 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
+          </a>
+        </div>
+
+        <div class="h-6 w-px bg-gray-300 dark:bg-gray-700"></div>
+
+        <div class="flex items-center gap-2 pl-2">
+          <div class="flex items-center gap-0.5 p-0.5 bg-gray-100 dark:bg-gray-800 rounded-lg transition-colors duration-200">
+            <button
+              (click)="switchLanguage('en')"
+              [class.bg-white]="currentLang === 'en'"
+              [class.dark:bg-gray-700]="currentLang === 'en'"
+              [class.shadow-sm]="currentLang === 'en'"
+              class="px-2.5 py-1.5 text-xs font-semibold rounded-md transition-all duration-200"
+              [class.text-[#306AB4]]="currentLang === 'en'"
+              [class.dark:text-blue-400]="currentLang === 'en'"
+              [class.text-gray-500]="currentLang !== 'en'"
+              [class.dark:text-gray-400]="currentLang !== 'en'"
+              [class.hover:text-gray-700]="currentLang !== 'en'"
+              [class.dark:hover:text-gray-300]="currentLang !== 'en'"
+              aria-label="Switch to English">
+              EN
+            </button>
+            <button
+              (click)="switchLanguage('ja')"
+              [class.bg-white]="currentLang === 'ja'"
+              [class.dark:bg-gray-700]="currentLang === 'ja'"
+              [class.shadow-sm]="currentLang === 'ja'"
+              class="px-2.5 py-1.5 text-xs font-semibold rounded-md transition-all duration-200"
+              [class.text-[#306AB4]]="currentLang === 'ja'"
+              [class.dark:text-blue-400]="currentLang === 'ja'"
+              [class.text-gray-500]="currentLang !== 'ja'"
+              [class.dark:text-gray-400]="currentLang !== 'ja'"
+              [class.hover:text-gray-700]="currentLang !== 'ja'"
+              [class.dark:hover:text-gray-300]="currentLang !== 'ja'"
+              aria-label="Switch to Japanese">
+              JA
+            </button>
+          </div>
+
+          <button
+            (click)="toggleDarkMode()"
+            class="p-2.5 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-[#306AB4] dark:hover:text-blue-400 transition-all duration-200"
+            aria-label="Toggle dark mode">
+            <fa-icon *ngIf="darkMode" [icon]="faSun" class="text-base"></fa-icon>
+            <fa-icon *ngIf="!darkMode" [icon]="faMoon" class="text-base"></fa-icon>
+          </button>
+
+          <a href="#contact"
+             [ngClass]="{'ring-2 ring-white ring-offset-2 ring-offset-blue-600': isSectionActive('contact')}"
+             class="px-5 py-2 bg-gradient-to-r from-[#306AB4] to-blue-600 dark:from-blue-600 dark:to-blue-700 text-white text-sm font-semibold rounded-lg hover:shadow-lg transform hover:scale-105 transition-all duration-200">
+            {{ nav.contact }}
+          </a>
+        </div>
+      </div>
+
+      <div class="lg:hidden flex items-center gap-2">
+        <div class="flex items-center gap-0.5 p-0.5 bg-gray-100 dark:bg-gray-800 rounded-lg transition-colors duration-200">
+          <button
+            (click)="switchLanguage('en')"
+            [class.bg-white]="currentLang === 'en'"
+            [class.dark:bg-gray-700]="currentLang === 'en'"
+            [class.shadow-sm]="currentLang === 'en'"
+            class="px-2 py-1 text-xs font-semibold rounded-md transition-all duration-200"
+            [class.text-[#306AB4]]="currentLang === 'en'"
+            [class.dark:text-blue-400]="currentLang === 'en'"
+            [class.text-gray-500]="currentLang !== 'en'"
+            [class.dark:text-gray-400]="currentLang !== 'en'"
+            aria-label="Switch to English">
+            EN
+          </button>
+          <button
+            (click)="switchLanguage('ja')"
+            [class.bg-white]="currentLang === 'ja'"
+            [class.dark:bg-gray-700]="currentLang === 'ja'"
+            [class.shadow-sm]="currentLang === 'ja'"
+            class="px-2 py-1 text-xs font-semibold rounded-md transition-all duration-200"
+            [class.text-[#306AB4]]="currentLang === 'ja'"
+            [class.dark:text-blue-400]="currentLang === 'ja'"
+            [class.text-gray-500]="currentLang !== 'ja'"
+            [class.dark:text-gray-400]="currentLang !== 'ja'"
+            aria-label="Switch to Japanese">
+            JA
+          </button>
+        </div>
+
+        <button
+          (click)="toggleDarkMode()"
+          class="p-2 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-200"
+          aria-label="Toggle dark mode">
+          <fa-icon *ngIf="darkMode" [icon]="faSun" class="text-base"></fa-icon>
+          <fa-icon *ngIf="!darkMode" [icon]="faMoon" class="text-base"></fa-icon>
+        </button>
+
+        <button
+          class="p-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-200"
+          (click)="toggleMenu()"
+          aria-label="Toggle navigation">
+          <fa-icon *ngIf="!isMenuOpen" [icon]="faBars" size="lg"></fa-icon>
+          <fa-icon *ngIf="isMenuOpen" [icon]="faTimes" size="lg"></fa-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="isMenuOpen"
+       class="lg:hidden border-t border-gray-200 dark:border-gray-800 bg-white/95 dark:bg-gray-900/95 backdrop-blur-lg shadow-xl animate-slide-down transition-colors duration-300">
+    <div class="px-4 py-6 space-y-1">
+
+      <div class="space-y-1 mb-6">
+        <a [routerLink]="['/']"
+           [routerLinkActiveOptions]="{exact: true}"
+           routerLinkActive="mobile-nav-active"
+           (click)="toggleMenu()"
+           class="mobile-nav-link block px-4 py-3 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-[#306AB4] dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-gray-800 rounded-lg transition-all duration-200">
+          {{ nav.home }}
+        </a>
+        <a [routerLink]="['/about-me']"
+           routerLinkActive="mobile-nav-active"
+           (click)="toggleMenu()"
+           class="mobile-nav-link block px-4 py-3 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-[#306AB4] dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-gray-800 rounded-lg transition-all duration-200">
+          {{ nav.about }}
+        </a>
+        <a href="#skills"
+           [ngClass]="{'mobile-nav-active': isSectionActive('skills')}"
+           (click)="toggleMenu()"
+           class="mobile-nav-link block px-4 py-3 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-[#306AB4] dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-gray-800 rounded-lg transition-all duration-200">
+          {{ nav.skills }}
+        </a>
+        <a href="#experience"
+           [ngClass]="{'mobile-nav-active': isSectionActive('experience')}"
+           (click)="toggleMenu()"
+           class="mobile-nav-link block px-4 py-3 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-[#306AB4] dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-gray-800 rounded-lg transition-all duration-200">
+          {{ nav.experience }}
+        </a>
+        <a href="#projects"
+           [ngClass]="{'mobile-nav-active': isSectionActive('projects')}"
+           (click)="toggleMenu()"
+           class="mobile-nav-link block px-4 py-3 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-[#306AB4] dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-gray-800 rounded-lg transition-all duration-200">
+          {{ nav.projects }}
+        </a>
+        <a href="#education"
+           [ngClass]="{'mobile-nav-active': isSectionActive('education')}"
+           (click)="toggleMenu()"
+           class="mobile-nav-link block px-4 py-3 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-[#306AB4] dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-gray-800 rounded-lg transition-all duration-200">
+          {{ nav.education }}
+        </a>
+        <a href="https://medium.com/@rifqy-lxgw"
+           target="_blank"
+           rel="noopener noreferrer"
+           (click)="toggleMenu()"
+           class="mobile-nav-link block px-4 py-3 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-[#306AB4] dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-gray-800 rounded-lg transition-all duration-200">
+          Blog
+        </a>
+      </div>
+
+      <!-- Mobile CTA -->
+      <div class="pt-2 border-t border-gray-200 dark:border-gray-800">
+        <a href="#contact"
+           [ngClass]="{'ring-2 ring-white ring-offset-2': isSectionActive('contact')}"
+           (click)="toggleMenu()"
+           class="block w-full px-6 py-3 bg-gradient-to-r from-[#306AB4] to-blue-600 dark:from-blue-600 dark:to-blue-700 text-white text-center font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition-all duration-200">
+          {{ nav.contact }}
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="content">
+  <router-outlet></router-outlet>
+</div>
+
+<footer class="bg-[#17141C] dark:bg-gray-950 text-white transition-colors duration-300">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 py-12">
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 pb-8 border-b border-gray-800 dark:border-gray-700">
+      <div class="space-y-4">
+        <img [src]="imagePath + 'logo.png'" alt="mrifqyz" class="h-10 w-auto">
+        <div class="flex gap-6">
+          <a [routerLink]="['/']" class="text-gray-400 dark:text-gray-500 hover:text-white dark:hover:text-blue-400 transition-colors text-sm">{{ nav.home }}</a>
+          <a [routerLink]="['/about-me']" class="text-gray-400 dark:text-gray-500 hover:text-white dark:hover:text-blue-400 transition-colors text-sm">{{ nav.about }}</a>
+          <a href="#skills" class="text-gray-400 dark:text-gray-500 hover:text-white dark:hover:text-blue-400 transition-colors text-sm">{{ nav.skills }}</a>
+          <a href="#projects" class="text-gray-400 dark:text-gray-500 hover:text-white dark:hover:text-blue-400 transition-colors text-sm">{{ nav.projects }}</a>
+          <a href="https://medium.com/@rifqy-lxgw" target="_blank" class="text-gray-400 dark:text-gray-500 hover:text-white dark:hover:text-blue-400 transition-colors text-sm">Blog</a>
+        </div>
+      </div>
+
+      <div class="flex flex-col md:items-end gap-4">
+        <div class="space-y-2">
+          <a href="mailto:mrifqyz.work@gmail.com" class="text-gray-300 dark:text-gray-400 hover:text-white dark:hover:text-blue-400 transition-colors text-sm flex items-center gap-2">
+            <fa-icon [icon]="faEnvelope" class="text-sm"></fa-icon>
+            mrifqyz.work&#64;gmail.com
+          </a>
+          <a href="tel:+818029931806" class="text-gray-300 dark:text-gray-400 hover:text-white dark:hover:text-blue-400 transition-colors text-sm flex items-center gap-2">
+            <fa-icon [icon]="faPhone" class="text-sm"></fa-icon>
+            +81 8029931806
+          </a>
+        </div>
+
+        <div class="flex gap-3">
+          <a href="https://www.linkedin.com/in/mrifqyz/" target="_blank" rel="noopener noreferrer"
+             class="w-9 h-9 flex items-center justify-center rounded-full bg-white/10 hover:bg-[#0077b5] transition-all duration-300">
+            <img [src]="imagePath + 'icon/linkedin.png'" class="w-4 h-4" alt="LinkedIn">
+          </a>
+          <a href="https://github.com/mrifqyz" target="_blank" rel="noopener noreferrer"
+             class="w-9 h-9 flex items-center justify-center rounded-full bg-white/10 hover:bg-gray-700 transition-all duration-300">
+            <img [src]="imagePath + 'icon/github.png'" class="w-4 h-4" alt="GitHub">
+          </a>
+          <a href="https://gitlab.com/mrifqyz" target="_blank" rel="noopener noreferrer"
+             class="w-9 h-9 flex items-center justify-center rounded-full bg-white/10 hover:bg-[#fc6d26] transition-all duration-300">
+            <img [src]="imagePath + 'icon/gitlab.png'" class="w-4 h-4" alt="GitLab">
+          </a>
+          <a href="https://medium.com/@rifqy-lxgw" target="_blank" rel="noopener noreferrer"
+             class="w-9 h-9 flex items-center justify-center rounded-full bg-white/10 hover:bg-gray-700 transition-all duration-300">
+            <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pt-6">
+      <p class="text-gray-400 dark:text-gray-500 text-sm text-center md:text-left transition-colors duration-300">
+        © 2025 Mohamad Rifqy Zulkarnaen. All rights reserved.
+      </p>
+    </div>
+  </div>
+</footer>

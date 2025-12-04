@@ -1,0 +1,13 @@
+// Active navigation link styles for desktop
+.nav-link.nav-active {
+  @apply text-[#306AB4] dark:text-blue-400;
+  @apply bg-blue-50 dark:bg-gray-800;
+  @apply font-semibold;
+}
+
+// Active navigation link styles for mobile
+.mobile-nav-link.mobile-nav-active {
+  @apply text-[#306AB4] dark:text-blue-400;
+  @apply bg-blue-50 dark:bg-gray-800;
+  @apply font-bold;
+}

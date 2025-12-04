@@ -1,0 +1,59 @@
+<div class="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-xl transition-all duration-300">
+  <div class="relative h-60 bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 overflow-hidden transition-colors duration-300">
+    <img [src]="project.image" [alt]="project.title" class="w-full h-full object-cover">
+    <div class="absolute top-4 right-4 flex gap-2">
+      <span *ngIf="project.isFeatured"
+            class="px-3 py-1 bg-gradient-to-r from-yellow-400 to-orange-400 text-white text-xs font-bold rounded-full shadow-lg flex items-center gap-1">
+        <fa-icon [icon]="faStar" class="text-xs"></fa-icon>
+        FEATURED
+      </span>
+      <span class="px-3 py-1 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm text-xs font-semibold text-gray-700 dark:text-gray-300 rounded-full transition-colors duration-300">
+        {{ project.badge }}
+      </span>
+    </div>
+  </div>
+
+  <div class="p-6">
+    <div class="mb-4">
+      <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2 transition-colors duration-300">{{ project.title }}</h3>
+      <div class="flex items-center justify-between text-sm mb-2">
+        <p class="text-gray-500 dark:text-gray-400 flex items-center transition-colors duration-300">
+          <fa-icon [icon]="faCalendar" class="mr-1"></fa-icon>
+          {{ project.date }}
+        </p>
+        <p class="text-[#306AB4] dark:text-blue-400 font-semibold flex items-center transition-colors duration-300">
+          <fa-icon [icon]="faUserTie" class="mr-1"></fa-icon>
+          {{ project.role }}
+        </p>
+      </div>
+    </div>
+
+    <p class="text-gray-600 dark:text-gray-400 text-sm mb-3 transition-colors duration-300">
+      {{ project.description }}
+    </p>
+
+    <div class="mb-4">
+      <p class="text-xs font-semibold text-gray-700 dark:text-gray-300 mb-2 transition-colors duration-300">Tech Stack:</p>
+      <div class="flex flex-wrap gap-2">
+        <app-badge *ngFor="let tech of project.techStack" [label]="tech" [color]="getBadgeColor(tech)"></app-badge>
+      </div>
+    </div>
+
+    <div class="flex flex-wrap gap-3 pt-4 border-t border-gray-100 dark:border-gray-700 transition-colors duration-300">
+      <a *ngFor="let link of project.links"
+         [href]="link.href"
+         target="_blank"
+         rel="noopener noreferrer"
+         [ngClass]="{
+           'flex items-center gap-1 text-sm font-medium px-3 py-1.5 rounded-lg transition-all duration-300': true,
+           'bg-gray-900 dark:bg-gray-700 text-white hover:bg-gray-800 dark:hover:bg-gray-600': link.type === 'repo',
+           'bg-gradient-to-r from-green-500 to-emerald-500 text-white hover:from-green-600 hover:to-emerald-600': link.type === 'liveDemo',
+           'bg-blue-500 dark:bg-blue-600 text-white hover:bg-blue-600 dark:hover:bg-blue-700': link.type === 'website',
+           'bg-purple-500 dark:bg-purple-600 text-white hover:bg-purple-600 dark:hover:bg-purple-700': link.type === 'docs'
+         }">
+        <fa-icon [icon]="link.icon" class="text-sm"></fa-icon>
+        {{ link.label }}
+      </a>
+    </div>
+  </div>
+</div>

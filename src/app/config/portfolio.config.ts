@@ -154,7 +154,7 @@ export const PORTFOLIO_CONFIG = {
       ja: '意味のある影響をもたらす'
     },
     titleHighlight: {
-      en: 'Scalable Systems',
+      en: 'Scalable Application',
       ja: 'スケーラブルなシステム'
     },
     titlePart2: {
